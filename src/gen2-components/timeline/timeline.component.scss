@@ -17,7 +17,7 @@ h1 {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  padding: 20px 0;
+  padding: 0;
 }
 
 .timeline-center-line {
@@ -33,30 +33,7 @@ h1 {
 .timeline-item {
   display: flex;
   margin-bottom: 50px;
-  animation: slideIn 0.6s ease-out forwards;
-  animation-fill-mode: both;
   position: relative;
-
-  &[data-index] {
-    animation-delay: var(--delay, 0s);
-  }
-
-  @for $i from 1 through 10 {
-    &[data-index="#{$i - 1}"] {
-      animation-delay: calc($i * 0.1s);
-    }
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .timeline-left {
@@ -75,16 +52,11 @@ h1 {
   flex: 1;
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
   margin: 0 20px;
 }
 
-.timeline-item:hover .timeline-content {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-}
 
 .timeline-marker {
   position: absolute;
@@ -96,18 +68,7 @@ h1 {
   z-index: 10;
 }
 
-.marker-circle {
-  width: 24px;
-  height: 24px;
-  background: white;
-  border: 4px solid #667eea;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
-  z-index: 2;
-}
-
 .marker-time {
-  margin-top: 12px;
   background: rgba(255, 255, 255, 0.95);
   padding: 4px 12px;
   border-radius: 20px;
@@ -116,12 +77,4 @@ h1 {
   color: #667eea;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-:host ::ng-deep {
-  .event-component {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
 }

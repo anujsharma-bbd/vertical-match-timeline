@@ -2,25 +2,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-content: center;
 }
 
 .event-icon {
   font-size: 2rem;
 }
 
-.game-icon {
-  animation: flagWave 0.8s ease-in-out infinite;
-  transform-origin: 80% 20%;
-}
-
-@keyframes flagWave {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-10deg); }
-}
-
-.event-details {
-  flex: 1;
-}
 
 .event-time {
   font-size: 0.85rem;
@@ -70,17 +58,3 @@
   letter-spacing: 1px;
 }
 
-.game-end {
-  animation: slideInEnd 0.6s ease-out;
-}
-
-@keyframes slideInEnd {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

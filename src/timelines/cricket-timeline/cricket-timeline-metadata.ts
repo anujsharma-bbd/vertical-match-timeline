@@ -13,26 +13,26 @@ interface TimelineEvent {
 export const CRICKET_TIMELINE_DATA: TimelineEvent[] = [
   {
     component: MatchEndComponent,
-    data: { overs: '20.0', winner: 'Team India', result: 'Won by 3 wickets' }
+    data: { direction: 'full', overs: '20.0', winner: 'Team India', result: 'Won by 3 wickets' }
   },
   {
     component: WicketComponent,
-    data: { overs: '19.4', team: 'Team India', player: 'Rohit Sharma', dismissalType: 'Caught by Johnson', direction: 'left' }
+    data: { direction: 'left', overs: '19.4', team: 'Team India', player: 'Rohit Sharma', dismissalType: 'Caught by Johnson' }
   },
   {
     component: SixComponent,
-    data: { overs: '18.2', team: 'Team Australia', batter: 'David Warner', direction: 'right' }
+    data: { direction: 'right', overs: '18.2', team: 'Team Australia', batter: 'David Warner' }
   },
   {
     component: FourComponent,
-    data: { overs: '15.3', team: 'Team India', batter: 'Virat Kohli', direction: 'left' }
+    data: { direction: 'left', overs: '15.3', team: 'Team India', batter: 'Virat Kohli' }
   },
   {
     component: BoundaryComponent,
-    data: { overs: '10.1', team: 'Team Australia', type: 'Boundary', runs: '4', direction: 'right' }
+    data: { direction: 'right', overs: '10.1', team: 'Team Australia', type: 'Boundary', runs: '4' }
   },
   {
     component: TossComponent,
-    data: { overs: '0.0', team: 'Team India', decision: 'Elected to bat' }
+    data: { direction: 'full', overs: '0.0', team: 'Team India', decision: 'Elected to bat' }
   }
 ];

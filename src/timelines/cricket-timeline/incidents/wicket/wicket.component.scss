@@ -12,16 +12,6 @@
   font-size: 2rem;
 }
 
-.wicket-icon {
-  animation: spin 0.8s ease-in-out;
-}
-
-@keyframes spin {
-  0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(180deg) scale(1.1); }
-  100% { transform: rotateY(360deg); }
-}
-
 .event-details {
   flex: 1;
 }
@@ -68,19 +58,4 @@
   padding-top: 6px;
   border-top: 1px solid #ecf0f1;
   font-style: italic;
-}
-
-.wicket {
-  animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }

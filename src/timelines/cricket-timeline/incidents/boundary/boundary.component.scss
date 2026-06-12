@@ -10,21 +10,6 @@
 
 .event-icon {
   font-size: 2rem;
-  animation: fly 0.8s ease-in-out;
-}
-
-@keyframes fly {
-  0% {
-    transform: translateY(20px) rotateZ(-45deg);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(-20px) rotateZ(0deg);
-  }
-  100% {
-    transform: translateY(0) rotateZ(0deg);
-    opacity: 1;
-  }
 }
 
 .event-details {
@@ -64,19 +49,4 @@
   font-weight: 600;
   font-size: 0.95rem;
   text-transform: uppercase;
-}
-
-.boundary {
-  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }

@@ -12,16 +12,6 @@
   font-size: 2rem;
 }
 
-.penalty-icon {
-  animation: shake 0.5s ease-in-out;
-}
-
-@keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-5deg); }
-  75% { transform: rotate(5deg); }
-}
-
 .event-details {
   flex: 1;
 }
@@ -60,19 +50,4 @@
   font-weight: 600;
   font-size: 0.95rem;
   text-transform: uppercase;
-}
-
-.penalty {
-  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }

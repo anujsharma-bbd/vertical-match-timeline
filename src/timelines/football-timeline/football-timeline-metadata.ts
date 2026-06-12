@@ -28,10 +28,10 @@ export const FOOTBALL_TIMELINE_DATA: TimelineEvent[] = [
   },
   {
     component: GoalComponent,
-    data: { direction: 'left', teamName: 'Team A', scorer: 'Alex Brown', assist: 'John Smith', time: '15\'' }
+    data: { direction: 'right', teamName: 'Team A', scorer: 'Alex Brown', assist: 'John Smith', time: '15\'' }
   },
   {
     component: KickOffComponent,
-    data: { direction: 'left', teamName: 'Team A', time: '00:00\'' }
+    data: { direction: 'full', teamName: 'Team A', time: '00:00\'' }
   }
 ];
