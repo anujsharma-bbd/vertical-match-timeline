@@ -1,9 +1,9 @@
-<div class="event wicket">
+<div class="event wicket wicket-{{data()?.direction}}">
   <div class="event-icon wicket-icon">🏏</div>
   <div class="event-details">
     <div class="event-time">{{ data()?.overs }}</div>
     <div class="event-description">
-      <span class="team-badge" [class.team-right]="data()?.direction === 'right'">
+      <span class="team-badge" [class.team-left]="data()?.direction === 'left'">
         {{ data()?.team }}
       </span>
       <span class="wicket-info">{{ data()?.player }} - WICKET</span>

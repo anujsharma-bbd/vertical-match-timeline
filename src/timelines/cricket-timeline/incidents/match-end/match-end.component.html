@@ -1,9 +1,9 @@
-<div class="event match-end">
+<div class="event match-end match-end-{{data()?.direction}}">
   <div class="event-icon match-icon">🏆</div>
   <div class="event-details">
     <div class="event-time">{{ data()?.overs }}</div>
     <div class="event-description">
-      <span class="team-badge winner">{{ data()?.winner }}</span>
+      <span class="team-badge winner" [class.team-left]="data()?.direction === 'left'">{{ data()?.winner }}</span>
       <span class="win-info">MATCH WON</span>
     </div>
     <div class="match-result">{{ data()?.result }}</div>

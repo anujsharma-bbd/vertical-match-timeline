@@ -1,9 +1,9 @@
-<div class="event game-end">
+<div class="event game-end game-end-{{data()?.direction}}">
   <div class="event-icon game-icon">🏁</div>
   <div class="event-details">
     <div class="event-time">{{ data()?.duration }}</div>
     <div class="event-description">
-      <span class="team-badge team-a">{{ data()?.teamName }}</span>
+      <span class="team-badge team-a" [class.team-left]="data()?.direction === 'left'">{{ data()?.teamName }}</span>
       <span class="final-score">Final Score: {{ data()?.score }}</span>
     </div>
     <div class="match-status">MATCH ENDED</div>

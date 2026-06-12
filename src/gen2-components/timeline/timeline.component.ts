@@ -15,6 +15,7 @@ interface TimelineEvent {
   data: any;
 }
 
+const HOST_COMPONENT_CLASS_NAME = 'sbb2b-incident-component';
 @Component({
   selector: 'app-timeline',
   standalone: true,
@@ -47,6 +48,12 @@ export class TimelineComponent implements OnChanges, OnDestroy {
           if (componentRef.instance && event.data) {
             componentRef.setInput('data', event.data);
           }
+
+          // Add wrapper class
+          const hostElement = componentRef.hostView as any;
+          if (hostElement.rootNodes[0]) {
+            hostElement.rootNodes[0].classList.add(HOST_COMPONENT_CLASS_NAME);
+          }
         }
       });
     });
@@ -64,5 +71,13 @@ export class TimelineComponent implements OnChanges, OnDestroy {
       return event.data.time || event.data.duration || event.data.overs || '—';
     }
     return '—';
+  }
+
+  getDirection(event: TimelineEvent): string {
+    return event?.data?.direction ?? 'full';
+  }
+
+  getTimelineClass(direction: string): string {
+    return `timeline-item timeline-${direction}`;
   }
 }

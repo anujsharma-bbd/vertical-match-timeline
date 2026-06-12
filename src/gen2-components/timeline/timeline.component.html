@@ -3,16 +3,11 @@
   <div class="timeline-wrapper">
     <div class="timeline-center-line"></div>
     @for (event of timelineData; let i = $index; track i) {
-      <div
-        class="timeline-item"
-        [class.timeline-left]="event.data?.direction === 'left'"
-        [class.timeline-right]="event.data?.direction === 'right'"
-        [class.timeline-full]="event.data?.direction === 'full'"
-      >
+      <div [class]="getTimelineClass(getDirection(event))">
         <div class="timeline-content">
           <ng-container #dynamicContainer></ng-container>
         </div>
-        @if (event.data?.direction !== "full") {
+        @if (getDirection(event) !== "full") {
           <div class="timeline-marker">
             <div class="marker-time">{{ getEventTime(i) }}</div>
           </div>

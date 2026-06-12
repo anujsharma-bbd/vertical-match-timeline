@@ -1,12 +1,12 @@
-<div class="event four four-{{data()?.direction}}">
-  <div class="event-icon four-icon">4️⃣</div>
+<div class="event free-hit free-hit-{{data()?.direction}}">
+  <div class="event-icon free-hit-icon">🔥</div>
   <div class="event-details">
     <div class="event-time">{{ data()?.overs }}</div>
     <div class="event-description">
       <span class="team-badge" [class.team-left]="data()?.direction === 'left'">
         {{ data()?.team }}
       </span>
-      <span class="four-info">{{ data()?.batter }} - FOUR</span>
+      <span class="free-hit-info">{{ data()?.type }} - {{ data()?.runs }} RUNS</span>
     </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
-<div class="event six">
-  <div class="event-icon six-icon">📶</div>
+<div class="event six six-{{data()?.direction}}">
+  <div class="event-icon six-icon">6️⃣</div>
   <div class="event-details">
     <div class="event-time">{{ data()?.overs }}</div>
     <div class="event-description">
-      <span class="team-badge" [class.team-right]="data()?.direction === 'right'">
+      <span class="team-badge" [class.team-left]="data()?.direction === 'left'">
         {{ data()?.team }}
       </span>
       <span class="six-info">{{ data()?.batter }} - SIX!</span>
