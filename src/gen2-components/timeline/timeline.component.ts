@@ -1,7 +1,6 @@
-import { 
-  Component, 
-  OnInit, 
-  ViewContainerRef, 
+import {
+  Component,
+  ViewContainerRef,
   ViewChildren,
   QueryList,
   OnDestroy,
@@ -23,21 +22,13 @@ interface TimelineEvent {
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent implements OnInit, OnChanges, OnDestroy {
-  @ViewChildren('dynamicContainer', { read: ViewContainerRef })  containers!: QueryList<ViewContainerRef>;
+export class TimelineComponent implements OnChanges, OnDestroy {
+  @ViewChildren('dynamicContainer', { read: ViewContainerRef }) containers!: QueryList<ViewContainerRef>;
 
   @Input() timelineData: TimelineEvent[] = [];
 
-  ngOnInit(): void {
-    // Initial render if data is already provided
-    if (this.timelineData && this.timelineData.length > 0) {
-      this.renderDynamicComponents();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // Re-render when timelineData input changes
-    if (changes['timelineData'] && !changes['timelineData'].firstChange) {
+  ngOnChanges({ timelineData }: SimpleChanges): void {
+    if (timelineData) {
       this.renderDynamicComponents();
     }
   }
@@ -45,21 +36,16 @@ export class TimelineComponent implements OnInit, OnChanges, OnDestroy {
   private renderDynamicComponents(): void {
     setTimeout(() => {
       const containerArray = this.containers.toArray();
-      
+
       this.timelineData.forEach((event, index) => {
         if (containerArray[index]) {
           containerArray[index].clear();
-          
+
           const componentRef = containerArray[index].createComponent(event.component);
-          
+
           // Pass entire data object as single property
           if (componentRef.instance && event.data) {
             componentRef.setInput('data', event.data);
-          }
-
-          const hostElement = componentRef.hostView as any;
-          if (hostElement.rootNodes[0]) {
-            hostElement.rootNodes[0].classList.add('event-component');
           }
         }
       });
@@ -78,15 +64,5 @@ export class TimelineComponent implements OnInit, OnChanges, OnDestroy {
       return event.data.time || event.data.duration || event.data.overs || '—';
     }
     return '—';
-  }
-
-  addEvent(component: any, data: any): void {
-    this.timelineData = [...this.timelineData, { component, data }];
-    this.renderDynamicComponents();
-  }
-
-  removeEvent(index: number): void {
-    this.timelineData = this.timelineData.filter((_, i) => i !== index);
-    this.renderDynamicComponents();
   }
 }
