@@ -1,52 +1,110 @@
 # Angular Dynamic Timeline Component Demo
 
-A modern Angular 17+ demo showcasing dynamic component creation and rendering with a beautiful sports timeline interface.
+A modern Angular 17+ demo showcasing dynamic component creation and rendering with a beautiful, responsive sports timeline interface supporting multiple timelines (Cricket & Football).
 
 ## 🎯 Features
 
 ### Latest Angular Features Used
 - **Standalone Components** - All components use the new standalone API
-- **Signals** - Reactive state management using Angular signals
-- **Effects** - Automatic reactivity with `effect()` API
-- **Control Flow** - New `@if` and `@for` syntax (no *ngIf, *ngFor)
-- **Input Signals** - Type-safe component inputs with `input()` function
-- **Dependency Injection** - Modern `inject()` function
-- **ViewContainerRef** - Dynamic component rendering
-- **Component References** - Programmatic component instantiation
+- **Control Flow** - Modern `@if`, `@for`, and `@let` syntax (no *ngIf, *ngFor)
+- **OnChanges Lifecycle** - Reactive updates via `ngOnChanges` hook
+- **Input Properties** - Type-safe `@Input()` decorators
+- **ViewContainerRef** - Dynamic component rendering and instantiation
+- **Type Safety** - Full TypeScript support with strict interfaces
 
 ### Dynamic Rendering
 - ✅ Dynamically load components based on metadata
-- ✅ Pass data to dynamic components programmatically
+- ✅ Pass typed data to dynamic components
+- ✅ Support for three layout directions: **left**, **right**, and **full** width
 - ✅ Add/remove timeline events at runtime
-- ✅ Reactive updates using Signals
-- ✅ Beautiful animations and transitions
+- ✅ Beautiful animations, transitions, and responsive design
+- ✅ Vertical timeline line connecting all events
 
-### Components
-- **TimelineComponent** - Main container managing dynamic rendering
-- **KickOffComponent** - Match start event
-- **GoalComponent** - Goal scoring event with assistant info
-- **PenaltyComponent** - Penalty kick event
-- **GameEndComponent** - Match conclusion event
+### Timeline Features
+- **Cricket Timeline** - Match events including wickets, sixes, fours, free hits, toss, and match end
+- **Football Timeline** - Match events including goals, penalties, kick-offs, and game end
+- **Flexible Event Layout** - Events can be left-aligned, right-aligned, or full-width
+- **Shared Components** - Reusable KickOff and GameEnd components across sports
 
 ## 📁 Project Structure
 
 ```
-angular-timeline-demo/
-├── app.component.ts          # Root component
-├── main.ts                   # Bootstrap file
-├── timeline.component.ts     # Main timeline container
-├── events/                   # Dynamic event components
-│   ├── kick-off.component.ts
-│   ├── goal.component.ts
-│   ├── penalty.component.ts
-│   └── game-end.component.ts
-├── index.html               # HTML template
+src/
+├── gen2-components/
+│   └── timeline/
+│       ├── timeline.component.ts       # Main timeline container
+│       ├── timeline.component.html     # Dynamic event rendering
+│       ├── timeline.component.scss     # Timeline styles
+│       └── common-incidents/
+│           ├── kick-off/              # Kick-off event component
+│           └── game-end/              # Game end event component
+│
+├── timelines/
+│   ├── cricket-timeline/
+│   │   ├── cricket-timeline-metadata.ts # Cricket events data
+│   │   └── incidents/
+│   │       ├── wicket/                  # Wicket event
+│   │       ├── six/                     # Six runs event
+│   │       ├── four/                    # Four runs event
+│   │       ├── boundary/                # Boundary event
+│   │       ├── toss/                    # Toss event
+│   │       ├── match-end/               # Match end event
+│   │       └── free-hit/                # Free hit event
+│   │
+│   └── football-timeline/
+│       ├── football-timeline-metadata.ts # Football events data
+│       └── incidents/
+│           ├── goal/                    # Goal scoring event
+│           └── penalty/                 # Penalty event
+│
+├── main.ts                  # Application bootstrap
+├── app.component.ts         # Root component
 ├── styles.scss              # Global styles
-├── package.json            # Dependencies
-├── angular.json            # Angular config
-├── tsconfig.json           # TypeScript config
-└── README.md              # This file
+├── index.html              # HTML template
+├── angular.json            # Angular configuration
+├── tsconfig.json           # TypeScript configuration
+└── package.json            # Dependencies
 ```
+
+## 🏗️ Architecture
+
+### TimelineComponent
+The core component that manages dynamic rendering of timeline events. It:
+- Accepts `@Input() timelineData: TimelineEvent[]`
+- Supports three layout directions via `getDirection()` method
+- Dynamically creates component instances for each event
+- Passes typed data to child components via `setInput('data', eventData)`
+
+### TimelineEventData Interface
+```typescript
+interface TimelineEventData {
+  direction: 'left' | 'right' | 'full';  // Mandatory layout direction
+  [key: string]: any;                    // Additional sport-specific properties
+}
+```
+
+### Event Components
+Each event component (Wicket, Six, Goal, Penalty, etc.):
+- Accepts a single `data = input<any>()` property
+- Accesses sport-specific data via `data()?.propertyName`
+- Follows consistent structure with icon, details, and description
+
+## 🎨 Layout Directions
+
+### Left Aligned (`'left'`)
+- Content positioned on the left
+- Marker (circle + time) positioned on the right
+- Typical for odd-indexed events
+
+### Right Aligned (`'right'`)
+- Content positioned on the right
+- Marker (circle + time) positioned on the left
+- Typical for even-indexed events
+
+### Full Width (`'full'`)
+- Content centered and spans full width
+- Marker positioned on top
+- Used for significant events (match start, match end, toss)
 
 ## 🚀 Getting Started
 
@@ -62,6 +120,8 @@ angular-timeline-demo/
 npm install
 
 # Start development server
+ng serve
+# or
 npm start
 
 # Navigate to http://localhost:4200/
@@ -77,27 +137,131 @@ Output will be in `dist/angular-timeline-demo/`
 
 ## 📝 Usage Example
 
-### Adding a New Event Dynamically
+### Using Cricket Timeline
 
 ```typescript
-import { TimelineComponent } from './timeline.component';
-import { GoalComponent } from './events/goal.component';
+import { TimelineComponent } from './gen2-components/timeline/timeline.component';
+import { CRICKET_TIMELINE_DATA } from './timelines/cricket-timeline/cricket-timeline-metadata';
 
-@Component({...})
+@Component({
+  selector: 'app-root',
+  template: `<app-timeline [timelineData]="timelineData"></app-timeline>`,
+  imports: [TimelineComponent]
+})
 export class AppComponent {
-  @ViewChild(TimelineComponent) timeline!: TimelineComponent;
-
-  addGoal() {
-    this.timeline.addEvent(GoalComponent, {
-      direction: 'left',
-      teamName: 'Team A',
-      scorer: 'New Player',
-      assist: 'Helper Player',
-      time: '50\''
-    });
-  }
+  timelineData = CRICKET_TIMELINE_DATA;
 }
 ```
+
+### Adding a New Timeline Event Dynamically
+
+```typescript
+import { SixComponent } from './timelines/cricket-timeline/incidents/six/six.component';
+
+// Add a new Six event
+this.timelineData = [
+  ...this.timelineData,
+  {
+    component: SixComponent,
+    data: {
+      direction: 'left',
+      overs: '12.3',
+      team: 'Team Australia',
+      batter: 'Steve Smith'
+    }
+  }
+];
+```
+
+### Creating a Custom Event Component
+
+```typescript
+import { Component, input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-custom-event',
+  standalone: true,
+  imports: [CommonModule],
+  template: `<div>{{ data()?.message }}</div>`
+})
+export class CustomEventComponent {
+  data = input<any>();
+}
+```
+
+## 🎮 Available Event Components
+
+### Cricket Events
+- **TossComponent** - Toss announcement
+- **WicketComponent** - Player dismissal
+- **SixComponent** - Six runs scored
+- **FourComponent** - Four runs scored
+- **BoundaryComponent** - Boundary hit
+- **FreeHitComponent** - Free hit event
+- **MatchEndComponent** - Match conclusion
+
+### Football Events
+- **GoalComponent** - Goal scored (with assist info)
+- **PenaltyComponent** - Penalty kick
+- **KickOffComponent** - Match kick-off
+- **GameEndComponent** - Match end with final score
+
+## 🎯 Key Implementation Details
+
+### Dynamic Component Loading
+```typescript
+const componentRef = container.createComponent(event.component);
+if (componentRef.instance && event.data) {
+  componentRef.setInput('data', event.data);
+}
+```
+
+### Direction-based Styling
+```scss
+.timeline-left { /* Content left, marker right */ }
+.timeline-right { /* Content right, marker left */ }
+.timeline-full { /* Content centered, marker on top */ }
+```
+
+### Vertical Timeline Line
+- Automatically connects events
+- Hidden on first event
+- Positioned absolutely relative to each marker
+- Gradient styling for visual appeal
+
+## 🔧 Technologies
+
+- **Angular 17+** - Modern framework features
+- **TypeScript 5+** - Strong typing and interfaces
+- **SCSS** - Advanced styling with variables and mixins
+- **Responsive Design** - Mobile and desktop compatible
+
+## 📦 Dependencies
+
+- `@angular/core` - Core Angular framework
+- `@angular/common` - Common Angular utilities
+
+## 🌟 Highlights
+
+✨ **Type-Safe Events** - Mandatory `direction` property in event data
+✨ **Flexible Layouts** - Three layout modes for different event types
+✨ **Performance Optimized** - Change detection on input changes only
+✨ **Reusable Components** - Shared components across multiple timelines
+✨ **Beautiful UI** - Gradient backgrounds, smooth animations, responsive design
+✨ **Easy to Extend** - Simple pattern for adding new event types
+
+## 📄 License
+
+MIT
+
+## 🤝 Contributing
+
+Feel free to fork this project and submit pull requests for any improvements!
+
+---
+
+**Built with ❤️ using Angular 17+**
 
 ### Creating Custom Event Components
 
