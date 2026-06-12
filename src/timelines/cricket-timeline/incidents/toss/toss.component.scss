@@ -1,0 +1,79 @@
+.event {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.event-icon {
+  font-size: 2rem;
+  animation: flip 0.6s ease-in-out;
+}
+
+@keyframes flip {
+  0% { transform: rotateY(0deg); opacity: 0; }
+  50% { transform: rotateY(180deg) scale(1.1); }
+  100% { transform: rotateY(360deg); opacity: 1; }
+}
+
+.toss-icon {
+  animation: flip 0.6s ease-in-out;
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-time {
+  font-size: 0.85rem;
+  color: #16a085;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-description {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.team-badge {
+  background: #16a085;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.toss-info {
+  color: #16a085;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.toss-decision {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #ecf0f1;
+  font-weight: 500;
+}
+
+.toss {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

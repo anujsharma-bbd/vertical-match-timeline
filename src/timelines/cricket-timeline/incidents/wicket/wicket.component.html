@@ -1,0 +1,13 @@
+<div class="event wicket">
+  <div class="event-icon wicket-icon">🏏</div>
+  <div class="event-details">
+    <div class="event-time">{{ overs() }}</div>
+    <div class="event-description">
+      <span class="team-badge" [class.team-right]="direction() === 'right'">
+        {{ team() }}
+      </span>
+      <span class="wicket-info">{{ player() }} - WICKET</span>
+    </div>
+    <div class="dismissal-type">{{ dismissalType() }}</div>
+  </div>
+</div>

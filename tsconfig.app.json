@@ -1,0 +1,16 @@
+/**
+ * Angular Timeline Demo - tsconfig for app compilation
+ */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "main.ts"
+  ],
+  "include": [
+    "**/*.d.ts"
+  ]
+}

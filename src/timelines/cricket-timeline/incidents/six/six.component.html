@@ -1,0 +1,12 @@
+<div class="event six">
+  <div class="event-icon six-icon">📶</div>
+  <div class="event-details">
+    <div class="event-time">{{ overs() }}</div>
+    <div class="event-description">
+      <span class="team-badge" [class.team-right]="direction() === 'right'">
+        {{ team() }}
+      </span>
+      <span class="six-info">{{ batter() }} - SIX!</span>
+    </div>
+  </div>
+</div>

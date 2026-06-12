@@ -1,0 +1,12 @@
+<div class="event boundary">
+  <div class="event-icon boundary-icon">🚀</div>
+  <div class="event-details">
+    <div class="event-time">{{ overs() }}</div>
+    <div class="event-description">
+      <span class="team-badge" [class.team-right]="direction() === 'right'">
+        {{ team() }}
+      </span>
+      <span class="boundary-info">{{ type() }} - {{ runs() }} RUNS</span>
+    </div>
+  </div>
+</div>

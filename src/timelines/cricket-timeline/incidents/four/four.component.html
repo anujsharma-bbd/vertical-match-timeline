@@ -1,0 +1,12 @@
+<div class="event four">
+  <div class="event-icon four-icon">4️⃣</div>
+  <div class="event-details">
+    <div class="event-time">{{ overs() }}</div>
+    <div class="event-description">
+      <span class="team-badge" [class.team-right]="direction() === 'right'">
+        {{ team() }}
+      </span>
+      <span class="four-info">{{ batter() }} - FOUR</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+.event {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.four-right {
+  flex-direction: row-reverse;
+}
+
+.event-icon {
+  font-size: 1.8rem;
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(10deg); }
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-time {
+  font-size: 0.85rem;
+  color: #f39c12;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-description {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.team-badge {
+  background: #2980b9;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.team-badge.team-right {
+  background: #e74c3c;
+}
+
+.four-info {
+  color: #f39c12;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.four {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

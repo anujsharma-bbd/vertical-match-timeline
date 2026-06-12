@@ -1,0 +1,86 @@
+.event {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.event-icon {
+  font-size: 2rem;
+}
+
+.game-icon {
+  animation: flagWave 0.8s ease-in-out infinite;
+  transform-origin: 80% 20%;
+}
+
+@keyframes flagWave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-time {
+  font-size: 0.85rem;
+  color: #27ae60;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-description {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.team-badge {
+  background: #27ae60;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.team-a {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.final-score {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.match-status {
+  font-size: 0.8rem;
+  color: #27ae60;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #ecf0f1;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.game-end {
+  animation: slideInEnd 0.6s ease-out;
+}
+
+@keyframes slideInEnd {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

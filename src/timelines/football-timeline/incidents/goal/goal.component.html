@@ -1,0 +1,17 @@
+<div class="event goal" [class.goal-right]="direction() === 'right'">
+  <div class="event-icon goal-icon">⚽</div>
+  <div class="event-details">
+    <div class="event-time">{{ time() }}</div>
+    <div class="event-description">
+      <span class="team-badge" [class.team-right]="direction() === 'right'">
+        {{ teamName() }}
+      </span>
+      <span class="goal-scorer">{{ scorer() }}</span>
+    </div>
+    <ng-container *ngIf="assist() && assist() !== 'None'">
+      <div class="goal-assist">
+        Assist: <strong>{{ assist() }}</strong>
+      </div>
+    </ng-container>
+  </div>
+</div>
