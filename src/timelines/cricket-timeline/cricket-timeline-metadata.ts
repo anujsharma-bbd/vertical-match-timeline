@@ -5,9 +5,14 @@ import { TossComponent } from './incidents/toss/toss.component';
 import { MatchEndComponent } from './incidents/match-end/match-end.component';
 import { FreeHitComponent } from './incidents/free-hit/free-hit.component';
 
-interface TimelineEvent {
+export interface TimelineEventData {
+  direction: 'left' | 'right' | 'full';
+  [key: string]: any;
+}
+
+export interface TimelineEvent {
   component: any;
-  data: any;
+  data: TimelineEventData;
 }
 
 export const CRICKET_TIMELINE_DATA: TimelineEvent[] = [
