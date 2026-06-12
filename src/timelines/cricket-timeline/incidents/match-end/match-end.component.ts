@@ -9,7 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./match-end.component.scss']
 })
 export class MatchEndComponent {
-  overs = input('20.0');
-  winner = input('Team');
-  result = input('Won by 5 wickets');
+  data = input<any>();
 }

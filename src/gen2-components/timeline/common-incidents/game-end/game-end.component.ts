@@ -9,8 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./game-end.component.scss']
 })
 export class GameEndComponent {
-  duration = input('90\'');
-  teamName = input('Match');
-  score = input('2-1');
-  direction = input('full');
+  data = input<any>();
 }

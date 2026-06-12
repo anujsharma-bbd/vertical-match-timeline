@@ -2,7 +2,7 @@
   <h1>Match Timeline</h1>
   <div class="timeline-wrapper">
     <div class="timeline-center-line"></div>
-    @for (event of timelineEvents(); let i = $index; track i) {
+    @for (event of timelineData; let i = $index; track i) {
       <div class="timeline-item" [class.timeline-left]="i % 2 === 0" [class.timeline-right]="i % 2 === 1">
         <div class="timeline-content">
           <ng-container #dynamicContainer></ng-container>

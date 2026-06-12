@@ -1,11 +1,11 @@
 <div class="event toss">
   <div class="event-icon toss-icon">🪙</div>
   <div class="event-details">
-    <div class="event-time">{{ overs() }}</div>
+    <div class="event-time">{{ data()?.overs }}</div>
     <div class="event-description">
-      <span class="team-badge">{{ team() }}</span>
+      <span class="team-badge">{{ data()?.team }}</span>
       <span class="toss-info">WON TOSS</span>
     </div>
-    <div class="toss-decision">{{ decision() }}</div>
+    <div class="toss-decision">{{ data()?.decision }}</div>
   </div>
 </div>

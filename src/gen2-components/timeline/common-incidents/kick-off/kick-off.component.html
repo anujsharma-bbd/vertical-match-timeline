@@ -1,10 +1,10 @@
 <div class="event kick-off">
   <div class="event-icon">⚽</div>
   <div class="event-details">
-    <div class="event-time">{{ time() }}</div>
+    <div class="event-time">{{ data()?.time }}</div>
     <div class="event-description">
-      <span class="team-badge" [class.team-left]="direction() === 'left'">
-        {{ teamName() }}
+      <span class="team-badge" [class.team-left]="data()?.direction === 'left'">
+        {{ data()?.teamName }}
       </span>
       <span class="event-text">Kick Off</span>
     </div>

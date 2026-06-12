@@ -9,8 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./six.component.scss']
 })
 export class SixComponent {
-  overs = input('0.0');
-  team = input('Team');
-  batter = input('Batter Name');
-  direction = input('left');
+  data = input<any>();
 }

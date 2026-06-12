@@ -9,8 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./four.component.scss']
 })
 export class FourComponent {
-  overs = input('0.0');
-  team = input('Team');
-  batter = input('Batter Name');
-  direction = input('left');
+  data = input<any>();
 }

@@ -1,12 +1,12 @@
-<div class="event penalty" [class.penalty-right]="direction() === 'right'">
+<div class="event penalty" [class.penalty-right]="data()?.direction === 'right'">
   <div class="event-icon penalty-icon">🅿️</div>
   <div class="event-details">
-    <div class="event-time">{{ time() }}</div>
+    <div class="event-time">{{ data()?.time }}</div>
     <div class="event-description">
-      <span class="team-badge penalty-badge" [class.team-right]="direction() === 'right'">
-        {{ teamName() }}
+      <span class="team-badge penalty-badge" [class.team-right]="data()?.direction === 'right'">
+        {{ data()?.teamName }}
       </span>
-      <span class="penalty-player">{{ player() }} - PENALTY</span>
+      <span class="penalty-player">{{ data()?.player }} - PENALTY</span>
     </div>
   </div>
 </div>

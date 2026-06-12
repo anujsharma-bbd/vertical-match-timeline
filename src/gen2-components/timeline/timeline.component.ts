@@ -2,14 +2,12 @@ import {
   Component, 
   OnInit, 
   ViewContainerRef, 
-  ViewChild,
   ViewChildren,
   QueryList,
   OnDestroy,
-  signal,
-  effect,
-  inject,
-  input
+  OnChanges,
+  SimpleChanges,
+  Input
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -25,68 +23,40 @@ interface TimelineEvent {
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent implements OnInit, OnDestroy {
-  @ViewChildren('dynamicContainer', { read: ViewContainerRef }) 
-  containers!: QueryList<ViewContainerRef>;
+export class TimelineComponent implements OnInit, OnChanges, OnDestroy {
+  @ViewChildren('dynamicContainer', { read: ViewContainerRef })  containers!: QueryList<ViewContainerRef>;
 
-  // Input to accept timeline data
-  timelineData = input<TimelineEvent[]>([]);
-
-  // Signal to manage timeline events
-  timelineEvents = signal<TimelineEvent[]>([]);
-
-  // Effect to respond to timeline changes
-  constructor() {
-    effect(() => {
-      const events = this.timelineEvents();
-      if (events.length > 0) {
-        this.renderDynamicComponents();
-      }
-    });
-  }
+  @Input() timelineData: TimelineEvent[] = [];
 
   ngOnInit(): void {
-    // Use provided data or load default
-    const data = this.timelineData();
-    if (data && data.length > 0) {
-      this.timelineEvents.set(data);
-    } else {
-      this.loadTimelineData();
+    // Initial render if data is already provided
+    if (this.timelineData && this.timelineData.length > 0) {
+      this.renderDynamicComponents();
     }
   }
 
-  /**
-   * Load timeline data from metadata - fallback for when no data provided
-   */
-  private loadTimelineData(): void {
-    // Default empty timeline
-    this.timelineEvents.set([]);
+  ngOnChanges(changes: SimpleChanges): void {
+    // Re-render when timelineData input changes
+    if (changes['timelineData'] && !changes['timelineData'].firstChange) {
+      this.renderDynamicComponents();
+    }
   }
 
-  /**
-   * Dynamically render components based on metadata
-   */
   private renderDynamicComponents(): void {
-    // Wait for view to be initialized
     setTimeout(() => {
       const containerArray = this.containers.toArray();
       
-      this.timelineEvents().forEach((event, index) => {
+      this.timelineData.forEach((event, index) => {
         if (containerArray[index]) {
-          // Clear the specific container
           containerArray[index].clear();
           
-          // Create component instance in the specific container
           const componentRef = containerArray[index].createComponent(event.component);
           
-          // Pass data to component using setInput for signals
+          // Pass entire data object as single property
           if (componentRef.instance && event.data) {
-            Object.keys(event.data).forEach(key => {
-              componentRef.setInput(key, event.data[key]);
-            });
+            componentRef.setInput('data', event.data);
           }
 
-          // Add wrapper class
           const hostElement = componentRef.hostView as any;
           if (hostElement.rootNodes[0]) {
             hostElement.rootNodes[0].classList.add('event-component');
@@ -102,30 +72,21 @@ export class TimelineComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * Get the time value from an event
-   */
   getEventTime(index: number): string {
-    const event = this.timelineEvents()[index];
+    const event = this.timelineData[index];
     if (event && event.data) {
       return event.data.time || event.data.duration || event.data.overs || '—';
     }
     return '—';
   }
 
-  /**
-   * Public method to add new event dynamically
-   */
   addEvent(component: any, data: any): void {
-    const currentEvents = this.timelineEvents();
-    this.timelineEvents.set([...currentEvents, { component, data }]);
+    this.timelineData = [...this.timelineData, { component, data }];
+    this.renderDynamicComponents();
   }
 
-  /**
-   * Public method to remove event by index
-   */
   removeEvent(index: number): void {
-    const currentEvents = this.timelineEvents();
-    this.timelineEvents.set(currentEvents.filter((_, i) => i !== index));
+    this.timelineData = this.timelineData.filter((_, i) => i !== index);
+    this.renderDynamicComponents();
   }
 }

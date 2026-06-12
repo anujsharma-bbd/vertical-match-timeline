@@ -9,9 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./wicket.component.scss']
 })
 export class WicketComponent {
-  overs = input('0.0');
-  team = input('Team');
-  player = input('Player Name');
-  dismissalType = input('Bowled');
-  direction = input('left');
+  data = input<any>();
 }

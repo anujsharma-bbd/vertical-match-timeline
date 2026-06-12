@@ -9,9 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./goal.component.scss']
 })
 export class GoalComponent {
-  time = input('00:00\'');
-  teamName = input('Team');
-  scorer = input('Player');
-  assist = input('');
-  direction = input('left');
+  data = input<any>();
 }

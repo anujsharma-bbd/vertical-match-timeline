@@ -9,8 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./penalty.component.scss']
 })
 export class PenaltyComponent {
-  time = input('45+2\'');
-  teamName = input('Team');
-  player = input('Player Name');
-  direction = input('left');
+  data = input<any>();
 }

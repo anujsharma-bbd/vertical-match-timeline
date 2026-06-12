@@ -1,13 +1,13 @@
 <div class="event wicket">
   <div class="event-icon wicket-icon">🏏</div>
   <div class="event-details">
-    <div class="event-time">{{ overs() }}</div>
+    <div class="event-time">{{ data()?.overs }}</div>
     <div class="event-description">
-      <span class="team-badge" [class.team-right]="direction() === 'right'">
-        {{ team() }}
+      <span class="team-badge" [class.team-right]="data()?.direction === 'right'">
+        {{ data()?.team }}
       </span>
-      <span class="wicket-info">{{ player() }} - WICKET</span>
+      <span class="wicket-info">{{ data()?.player }} - WICKET</span>
     </div>
-    <div class="dismissal-type">{{ dismissalType() }}</div>
+    <div class="dismissal-type">{{ data()?.dismissalType }}</div>
   </div>
 </div>

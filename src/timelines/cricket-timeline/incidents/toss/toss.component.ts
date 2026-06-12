@@ -9,7 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./toss.component.scss']
 })
 export class TossComponent {
-  overs = input('0.0');
-  team = input('Team');
-  decision = input('Elected to bat');
+  data = input<any>();
 }

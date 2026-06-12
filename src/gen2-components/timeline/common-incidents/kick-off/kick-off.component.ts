@@ -9,7 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./kick-off.component.scss']
 })
 export class KickOffComponent {
-  time = input('00:00\'');
-  teamName = input('Team');
-  direction = input('left');
+  data = input<any>();
 }

@@ -9,9 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./boundary.component.scss']
 })
 export class BoundaryComponent {
-  overs = input('0.0');
-  team = input('Team');
-  type = input('Boundary');
-  runs = input('4');
-  direction = input('left');
+  data = input<any>();
 }
