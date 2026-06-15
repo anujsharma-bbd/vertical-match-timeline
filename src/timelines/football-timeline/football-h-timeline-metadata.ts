@@ -9,6 +9,10 @@ export interface HTimelineEvent {
 export const FOOTBALL_H_TIMELINE_DATA: HTimelineEvent[] = [
   {
     component: HIncidentComponent,
+    data: { direction: 'center', time: '0\'', icon: '🚀' }
+  },
+  {
+    component: HIncidentComponent,
     data: { direction: 'home', time: '8\'', icon: '⚽' }
   },
   {
@@ -33,7 +37,7 @@ export const FOOTBALL_H_TIMELINE_DATA: HTimelineEvent[] = [
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'home', time: '88\'', icon: '🏁' }
+    data: { direction: 'center', time: '93\'', icon: '🏁' }
   }
 ];
 
