@@ -30,6 +30,28 @@ export class HTimelineComponent implements OnChanges, OnDestroy {
   @Input() timelineData: TimelineEvent[] = [];
   @Input() totalTime: string = '';
 
+  getEventPosition(timeStr: string): number {
+    const eventMin = this.parseTimeToMinutes(timeStr);
+    const totalMin = this.parseTimeToMinutes(this.totalTime) || 93;
+    if (totalMin === 0) return 0;
+    return Math.min(Math.max((eventMin / totalMin) * 100, 0), 100);
+  }
+
+  parseTimeToMinutes(timeStr: string): number {
+    if (!timeStr) return 0;
+    // Extract number from timeStr. E.g. "45+2'" becomes 47. "93:00" becomes 93. "0'" becomes 0.
+    const cleanStr = timeStr.replace(/[^0-9+.:]/g, '');
+    if (cleanStr.includes(':')) {
+      const parts = cleanStr.split(':');
+      return (parseFloat(parts[0]) || 0) + ((parseFloat(parts[1]) || 0) / 60);
+    }
+    if (cleanStr.includes('+')) {
+      const parts = cleanStr.split('+');
+      return parts.reduce((acc, val) => acc + (parseFloat(val) || 0), 0);
+    }
+    return parseFloat(cleanStr) || 0;
+  }
+
   ngOnChanges({ timelineData }: SimpleChanges): void {
     if (timelineData) {
       this.renderDynamicComponents();

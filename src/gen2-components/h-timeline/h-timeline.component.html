@@ -1,13 +1,14 @@
 <div class="h-timeline-container">
   <div class="h-timeline-wrapper">
     <div class="h-timeline-center-line"></div>
+    @if (totalTime) {
+      <div class="total-time">{{ totalTime }}</div>
+    }
     <div class="h-timeline-events">
-      @if (totalTime) {
-        <div class="total-time">{{ totalTime }}</div>
-      }
       @for (event of timelineData; let i = $index; track i) {
         <div
           class="h-timeline-item"
+          [style.left.%]="getEventPosition(event.data?.time)"
           [class.direction-home]="event.data?.direction === 'home'"
           [class.direction-away]="event.data?.direction === 'away'"
           [class.direction-center]="!event.data?.direction"

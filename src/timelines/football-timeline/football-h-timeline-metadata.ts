@@ -9,36 +9,32 @@ export interface HTimelineEvent {
 export const FOOTBALL_H_TIMELINE_DATA: HTimelineEvent[] = [
   {
     component: HIncidentComponent,
-    data: { direction: undefined, time: '0\'', icon: '🚀' }
+    data: { direction: 'home', time: '8\'', icon: '⚽' }
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'home', time: '15\'', icon: '🟨' }
+    data: { direction: 'away', time: '20\'', icon: '🟨' }
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'away', time: '16\'', icon: '🟥' }
+    data: { direction: 'home', time: '25\'', icon: '⚽' }
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'home', time: '17\'', icon: '⚽' }
+    data: { direction: 'away', time: '30\'', icon: '🔴' }
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'away', time: '18\'', icon: '🟥' }
+    data: { direction: 'home', time: '35\'', icon: '🟨🟥' }
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'home', time: '30\'', icon: '⚽' }
+    data: { direction: 'away', time: '65\'', icon: '🟥' }
   },
   {
     component: HIncidentComponent,
-    data: { direction: 'away', time: '45+2\'', icon: '🔴' }
-  },
-  {
-    component: HIncidentComponent,
-    data: { direction: 'home', time: '72\'', icon: '🏁' }
+    data: { direction: 'home', time: '88\'', icon: '🏁' }
   }
 ];
 
-export const FOOTBALL_H_TIMELINE_TOTAL_TIME = '90\'';
+export const FOOTBALL_H_TIMELINE_TOTAL_TIME = '93:00';
