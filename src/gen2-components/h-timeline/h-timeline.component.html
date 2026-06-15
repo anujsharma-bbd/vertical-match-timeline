@@ -1,0 +1,34 @@
+<div class="h-timeline-container" [class.icon-only]="iconOnly">
+  <div class="h-timeline-wrapper">
+    <div class="h-timeline-center-line"></div>
+    <div class="h-timeline-events">
+      @if (totalTime) {
+        <div class="total-time">{{ totalTime }}</div>
+      }
+      @for (event of timelineData; let i = $index; track i) {
+        <div
+          class="h-timeline-item"
+          [class.icon-only]="iconOnly"
+          [class.direction-home]="event.data?.direction === 'home'"
+          [class.direction-away]="event.data?.direction === 'away'"
+          [class.direction-center]="!event.data?.direction"
+        >
+          @if (!iconOnly) {
+            <div class="h-timeline-content">
+              <ng-container #dynamicContainer></ng-container>
+            </div>
+            <div class="h-timeline-marker">
+              <div class="h-marker-time">
+                {{ event.data?.time || event.data?.overs || "N/A" }}
+              </div>
+            </div>
+          } @else {
+            <div class="h-timeline-icon-container">
+              <ng-container #dynamicContainer></ng-container>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

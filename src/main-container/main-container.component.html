@@ -1,27 +1,34 @@
 <div class="main-container">
   <div class="tabs-container">
     <div class="tabs-header">
-      <button 
-        class="tab-button" 
+      <button
+        class="tab-button"
         [class.active]="activeTab() === 'football'"
-        (click)="activeTab.set('football')">
+        (click)="activeTab.set('football')"
+      >
         ⚽ Football
       </button>
-      <button 
-        class="tab-button" 
+      <button
+        class="tab-button"
         [class.active]="activeTab() === 'cricket'"
-        (click)="activeTab.set('cricket')">
+        (click)="activeTab.set('cricket')"
+      >
         🏏 Cricket
       </button>
     </div>
-    
+
     <div class="tabs-content">
-      @if (activeTab() === 'football') {
+      @if (activeTab() === "football") {
+        <app-h-timeline
+          [timelineData]="footballHData"
+          [totalTime]="footballHTotalTime"
+          [iconOnly]="true"
+        >
+        </app-h-timeline>
         <app-timeline [timelineData]="footballData"></app-timeline>
-      } @else if (activeTab() === 'cricket') {
+      } @else if (activeTab() === "cricket") {
         <app-timeline [timelineData]="cricketData"></app-timeline>
       }
     </div>
   </div>
 </div>
-

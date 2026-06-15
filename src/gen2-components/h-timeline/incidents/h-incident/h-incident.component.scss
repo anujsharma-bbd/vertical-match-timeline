@@ -1,0 +1,27 @@
+.incident-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  transition: transform 0.3s ease;
+  transform: rotate(15deg); display: inline-block;
+
+  &.direction-up {
+    margin-bottom: 10px;
+  }
+
+  &.direction-down {
+    margin-top: 10px;
+  }
+}
+
+
+.incident-time {
+  font-size: 0.85rem;
+  color: #667eea;
+  font-weight: 600;
+  white-space: nowrap;
+}
