@@ -25,9 +25,9 @@
           [iconOnly]="true"
         >
         </app-h-timeline>
-        <app-timeline [timelineData]="footballData"></app-timeline>
+        <app-v-timeline [timelineData]="footballData"></app-v-timeline>
       } @else if (activeTab() === "cricket") {
-        <app-timeline [timelineData]="cricketData"></app-timeline>
+        <app-v-timeline [timelineData]="cricketData"></app-v-timeline>
       }
     </div>
   </div>

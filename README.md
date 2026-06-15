@@ -145,7 +145,7 @@ import { CRICKET_TIMELINE_DATA } from './timelines/cricket-timeline/cricket-time
 
 @Component({
   selector: 'app-root',
-  template: `<app-timeline [timelineData]="timelineData"></app-timeline>`,
+  template: `<app-v-timeline [timelineData]="timelineData"></app-v-timeline>`,
   imports: [TimelineComponent]
 })
 export class AppComponent {

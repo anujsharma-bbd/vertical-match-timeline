@@ -1,5 +1,5 @@
-import { GameEndComponent } from "src/gen2-components/timeline/common/game-end/game-end.component";
-import { KickOffComponent } from "src/gen2-components/timeline/common/kick-off/kick-off.component";
+import { GameEndComponent } from "src/gen2-components/v-timeline/common/game-end/game-end.component";
+import { KickOffComponent } from "src/gen2-components/v-timeline/common/kick-off/kick-off.component";
 import { GoalComponent } from "./incidents/goal/goal.component";
 import { PenaltyComponent } from "./incidents/penalty/penalty.component";
 

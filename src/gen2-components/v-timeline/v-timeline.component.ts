@@ -17,11 +17,11 @@ interface TimelineEvent {
 
 const HOST_COMPONENT_CLASS_NAME = 'sbb2b-incident-component';
 @Component({
-  selector: 'app-timeline',
+  selector: 'app-v-timeline',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss']
+  templateUrl: './v-timeline.component.html',
+  styleUrls: ['./v-timeline.component.scss']
 })
 export class TimelineComponent implements OnChanges, OnDestroy {
   @ViewChildren('dynamicContainer', { read: ViewContainerRef }) containers!: QueryList<ViewContainerRef>;
