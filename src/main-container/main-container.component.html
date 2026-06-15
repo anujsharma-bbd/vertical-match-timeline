@@ -19,12 +19,7 @@
 
     <div class="tabs-content">
       @if (activeTab() === "football") {
-        <app-h-timeline
-          [timelineData]="footballHData"
-          [totalTime]="footballHTotalTime"
-          [iconOnly]="true"
-        >
-        </app-h-timeline>
+        <app-h-timeline [timelineData]="footballHData" [totalTime]="footballHTotalTime"></app-h-timeline>
         <app-v-timeline [timelineData]="footballData"></app-v-timeline>
       } @else if (activeTab() === "cricket") {
         <app-v-timeline [timelineData]="cricketData"></app-v-timeline>

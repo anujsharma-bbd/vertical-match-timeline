@@ -2,10 +2,7 @@
   padding: 40px 10px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-  &.icon-only {
-    padding: 30px 20px;
-  }
+  padding: 30px 20px;
 }
 
 .h-timeline-header {
@@ -71,11 +68,6 @@
   justify-content: center;
   position: relative;
 
-  &.icon-only {
-    min-width: auto;
-    gap: 0;
-  }
-
   // Home team - incidents appear above the center line
   &.direction-home {
     justify-content: flex-start;
@@ -94,49 +86,6 @@
   }
 }
 
-.h-timeline-content {
-  background: white;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100px;
-  min-width: 100px;
-}
-
-.h-timeline-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 10;
-}
-
-.h-marker-time {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: #667eea;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.h-timeline-marker::before {
-  content: "";
-  width: 16px;
-  height: 16px;
-  background: white;
-  border: 4px solid #667eea;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 // Responsive design
 @media (max-width: 768px) {
   .h-timeline-events {
@@ -145,11 +94,5 @@
 
   .h-timeline-item {
     min-width: 100px;
-  }
-
-  .h-timeline-content {
-    min-width: 80px;
-    min-height: 80px;
-    padding: 8px;
   }
 }

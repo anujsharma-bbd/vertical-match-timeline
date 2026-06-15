@@ -28,7 +28,6 @@ export class HTimelineComponent implements OnChanges, OnDestroy {
   @ViewChildren('dynamicContainer', { read: ViewContainerRef }) containers!: QueryList<ViewContainerRef>;
 
   @Input() timelineData: TimelineEvent[] = [];
-  @Input() iconOnly: boolean = false;
   @Input() totalTime: string = '';
 
   ngOnChanges({ timelineData }: SimpleChanges): void {
